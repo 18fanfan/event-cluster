@@ -1,0 +1,24 @@
+{
+    "fielddata_fields": [
+        "@timestamp"
+    ],
+    "fields": [
+    ],
+    "query": {
+        "query": {
+            "query_string": {
+                "analyze_wildcard": true,
+                "query": ""
+            }
+        }
+    },
+    "size": 1000,
+    "sort": [
+        {
+            "@timestamp": {
+                "order": "asc",
+                "unmapped_type": "boolean"
+            }
+        }
+    ]
+}

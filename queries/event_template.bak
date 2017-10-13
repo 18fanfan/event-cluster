@@ -1,0 +1,29 @@
+{
+    "fielddata_fields": [
+        "@timestamp"
+    ],
+    "fields": [
+        "@timestamp",
+        "auth",
+        "rawrequest",
+        "agent",
+        "clientip"
+    ],
+    "query": {
+        "query": {
+            "query_string": {
+                "analyze_wildcard": true,
+                "query": "type:apache_access AND company:tbox AND rawrequest: ((\"GET\" AND (\"view\" OR \"cp\" OR \"preview\" OR \"?a\"))  OR (\"PUT\" OR \"FILEPATCH\" OR \"DELTA\") AND (NOT \"FinishedPut\")) AND (NOT tags:\"_grokfailure\")"
+            }
+        }
+    },
+    "size": 1000,
+    "sort": [
+        {
+            "@timestamp": {
+                "order": "asc",
+                "unmapped_type": "boolean"
+            }
+        }
+    ]
+}
